@@ -13,7 +13,7 @@
             <!-- for random pic of computer -->
         
         <button onclick="
-            playerGame('Rock');
+            playerGame('rock');
         
         ">
         <img class="img-move" src="materials/rock-emoji.png">
@@ -22,14 +22,14 @@
         <button onclick="
         
         // call the funtion for the result
-            playerGame('Paper');
+            playerGame('paper');
 
         "><img class="img-move" src="materials/paper-emoji.png">Paper</button>
 
         <button onclick="
 
         // call the funtion for the result
-            playerGame('Scissors');
+            playerGame('scissors');
 
         "><img class="img-move" src="materials/scissors-emoji.png">Scissors</button>
 
@@ -94,38 +94,38 @@
 
             let result = '';
 
-        if(playerMove === 'Scissors'){
+        if(playerMove === 'scissors'){
 
-            if(computerMove === 'Rock'){
+            if(computerMove === 'rock'){
                 result = 'You LOSE';
             }
-            else if(computerMove === 'Paper'){
+            else if(computerMove === 'paper'){
                 result = 'You WIN';
             }
-            else if(computerMove === 'Scissors'){
+            else if(computerMove === 'scissors'){
                 result = 'It is a TIE';
             }
         }
-        else if (playerMove === 'Paper'){
+        else if (playerMove === 'paper'){
 
-            if(computerMove === 'Rock'){
+            if(computerMove === 'rock'){
                 result = 'You WIN';
             }
-            else if(computerMove === 'Paper'){
+            else if(computerMove === 'paper'){
                 result = 'It is a TIE';
             }
-            else if(computerMove === 'Scissors'){
+            else if(computerMove === 'scissors'){
                 result = 'You LOSE';
             }
         }
-        else if(playerMove === 'Rock'){
-            if(computerMove === 'Rock'){
+        else if(playerMove === 'rock'){
+            if(computerMove === 'rock'){
                 result = 'It is a TIE';
             }
-            else if(computerMove === 'Paper'){
+            else if(computerMove === 'paper'){
                 result = 'You LOSE';
             }
-            else if(computerMove === 'Scissors'){
+            else if(computerMove === 'scissors'){
                 result = 'You WIN';
             }
         }   
