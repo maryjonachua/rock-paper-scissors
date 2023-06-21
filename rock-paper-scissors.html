@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="rock-paper-scissor.css">
+</head>
+<body>
+
+    <h1>Rock Paper Scissors</h1>
+   <div class="container">
+            <!-- for random pic of computer -->
+        
+        <button onclick="
+            playerGame('Rock');
+        
+        ">
+        <img class="img-move" src="materials/rock-emoji.png">
+        Rock</button>
+
+        <button onclick="
+        
+        // call the funtion for the result
+            playerGame('Paper');
+
+        "><img class="img-move" src="materials/paper-emoji.png">Paper</button>
+
+        <button onclick="
+
+        // call the funtion for the result
+            playerGame('Scissors');
+
+        "><img class="img-move" src="materials/scissors-emoji.png">Scissors</button>
+
+       
+    </div> 
+
+    <div class="game-details">
+            <p class="game-result g-result"></p>
+            <p class="move-status move-stat"></p>
+            <p class="score-indicator score-indi"></p>
+    </div>
+
+    <div class="reset-button-container">
+        <button class="Reset-Button" onclick="
+        // reset object property
+            score.wins = 0;
+            score.loses = 0;
+            score.ties = 0;
+
+            localStorage.removeItem('score');
+            updateScorestatus();
+            resetResult_details()
+
+        ">Reset Score</button>
+    </div>
+ <script>
+     // variable for update score inside an object
+
+        // const score ={
+        //     wins: 0,
+        //     loses: 0,
+        //     ties: 0
+        // };
+
+        let score = JSON.parse(localStorage.getItem('score')) || {
+                wins: 0,
+                ties:0,
+                loses:0
+            };
+
+            /* refrence from above
+                if(score === null){
+                    score = {
+                        wins: 0,
+                        ties:0,
+                        loses:0
+            };
+        };
+        */
+
+        //  out of local storage bring back to java script
+        JSON.parse(localStorage.getItem('score'));
+
+        // for displaying score on html
+        updateScorestatus(); 
+
+
+         // function for Result and paramater
+        function playerGame(playerMove){
+
+            const computerMove = pickComputer();
+
+            let result = '';
+
+        if(playerMove === 'Scissors'){
+
+            if(computerMove === 'Rock'){
+                result = 'You LOSE';
+            }
+            else if(computerMove === 'Paper'){
+                result = 'You WIN';
+            }
+            else if(computerMove === 'Scissors'){
+                result = 'It is a TIE';
+            }
+        }
+        else if (playerMove === 'Paper'){
+
+            if(computerMove === 'Rock'){
+                result = 'You WIN';
+            }
+            else if(computerMove === 'Paper'){
+                result = 'It is a TIE';
+            }
+            else if(computerMove === 'Scissors'){
+                result = 'You LOSE';
+            }
+        }
+        else if(playerMove === 'Rock'){
+            if(computerMove === 'Rock'){
+                result = 'It is a TIE';
+            }
+            else if(computerMove === 'Paper'){
+                result = 'You LOSE';
+            }
+            else if(computerMove === 'Scissors'){
+                result = 'You WIN';
+            }
+        }   
+
+        // updating score
+        if(result === 'You WIN'){
+            score.win = score.wins + 1;
+        }
+        else if(result === 'You LOSE'){
+            score.loses = score.loses + 1;
+        }
+        else{
+            score.ties = score.ties + 1;
+        }
+
+         //   and save it local store even refresh saved pa din
+        //  convert to string JSON.stringify();
+
+        localStorage.setItem('score',JSON.stringify(score));
+
+
+        //update the score details on webpage
+        updateScorestatus();
+       
+        
+        document.querySelector('.game-result').innerHTML = result;
+
+
+        document.querySelector('.move-status').innerHTML = `You picked <img class="img-move" src="materials/${playerMove}-emoji.png"> <img class="img-move" src="materials/${computerMove}-emoji.png"> Computer picked `
+
+        /* pop out
+        // for message of result including score
+        alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}\nWins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`); 
+        */
+
+         
+        }
+        // end of function playerGame
+
+                 // function updatescore
+                function updateScorestatus()
+                {
+                    //update the score status on webpage
+                        document.querySelector('.score-indicator').innerHTML = `Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`;
+                }
+
+
+                // disapper when click reset
+                function resetResult_details(){
+                    document.querySelector('.game-result').innerHTML = '';
+                    document.querySelector('.move-status').innerHTML = '';
+
+                }
+
+
+                
+
+        // function Computer Choice (Random)
+
+        function pickComputer(){
+
+            let computerChoice = '';
+
+            const randomNumber = Math.random();
+
+            if(randomNumber >=0 && randomNumber < 1/3){
+                computerChoice = 'Rock';
+            }
+            else if (randomNumber >= 1/3 && randomNumber < 2/3){
+                computerChoice = 'Paper';
+            }
+
+            else if (randomNumber >= 2/3 && randomNumber < 1){
+                computerChoice = 'Scissors';
+            }
+
+            // return function
+            return computerChoice;
+
+        }
+
+        
+ </script>
+
+</body>
+</html>
