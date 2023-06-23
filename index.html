@@ -13,7 +13,7 @@
             <!-- for random pic of computer -->
         
         <button onclick="
-            playerGame('rock');
+            playGame('rock');
         
         ">
         <img class="img-move" src="materials/rock-emoji.png">
@@ -22,14 +22,14 @@
         <button onclick="
         
         // call the funtion for the result
-            playerGame('paper');
+            playGame('paper');
 
         "><img class="img-move" src="materials/paper-emoji.png">Paper</button>
 
         <button onclick="
 
         // call the funtion for the result
-            playerGame('scissors');
+            playGame('scissors');
 
         "><img class="img-move" src="materials/scissors-emoji.png">Scissors</button>
 
@@ -54,6 +54,9 @@
             resetResult_details()
 
         ">Reset Score</button>
+
+    <button class="AutoPlay-Button" onclick="autoPlay();">Auto Play</button>
+        
     </div>
  <script>
      // variable for update score inside an object
@@ -88,7 +91,7 @@
 
 
          // function for Result and paramater
-        function playerGame(playerMove){
+        function playGame(playerMove){
 
             const computerMove = pickComputer();
 
@@ -207,6 +210,42 @@
 
         }
 
+  // variable to keep track to stop the auto play
+        
+        let isAutoPlay = false;
+
+        let intervalID;
+
+        // AUTOPLAAAAAAAAY
+        function autoPlay(){
+            if(!isAutoPlay){
+
+                intervalID = setInterval(function(){
+                // auto play the game
+                // 'comMove another varialble to call the random picker then run the function play game
+                const compMove = pickComputer();
+
+                playGame(compMove);
+            }, 1000);
+
+            isAutoPlay = true;
+
+            // set interval have id
+            
+
+            }
+            else{
+                // get the id to stop
+                clearInterval(intervalID);
+                isAutoPlay = false;
+                document.querySelector('.AutoPlay-Button').innerHTML = 'Stop';
+                document.querySelector('.AutoPlay-Button').style.background = 'red';
+
+
+            }
+
+        }
+     
         
  </script>
 
