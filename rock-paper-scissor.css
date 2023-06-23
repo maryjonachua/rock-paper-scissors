@@ -72,7 +72,7 @@ h1{
     
 }
 
-    .Reset-Button{
+    .Reset-Button, .AutoPlay-Button{
     width: 150px;
     height: 40px;
     border: 3px solid white;
@@ -94,6 +94,12 @@ h1{
     scale: 1.1;
     background-color:rgb(220, 34, 34);
 }
+
+.AutoPlay-Button:hover{
+    scale: 1.1;
+    background-color:rgb(0, 68, 5);
+}
+
 
 /* picked pictures */
 .img-move{
