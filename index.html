@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="rock-paper-scissor.css">
+    <link rel="stylesheet" href="12-rock-paper-scissor.css">
 </head>
 <body>
 
@@ -55,8 +55,10 @@
 
         ">Reset Score</button>
 
-     <button class="AutoPlay-Button" onclick="autoPlay();">Auto Play</button>
+       <button class="AutoPlay-Button" onclick="autoPlay();">Auto Play</button>
     </div>
+
+
  <script>
      // variable for update score inside an object
 
@@ -134,7 +136,7 @@
 
         // updating score
         if(result === 'You WIN'){
-            score.wins = score.wins + 1;
+            score.wins= score.wins + 1;
         }
         else if(result === 'You LOSE'){
             score.loses = score.loses + 1;
@@ -208,45 +210,7 @@
             return computerChoice;
 
         }
-
-  // variable to keep track to stop the auto play
-        
-        let isAutoPlay = false;
-
-        let intervalID;
-
-        // AUTOPLAAAAAAAAY
-        function autoPlay(){
-            if(!isAutoPlay){
-
-                intervalID = setInterval(function(){
-                // auto play the game
-                // 'comMove another varialble to call the random picker then run the function play game
-                const compMove = pickComputer();
-
-                playGame(compMove);
-            }, 1000);
-
-            isAutoPlay = true;
-
-            // set interval have id
-            
-
-            }
-            else{
-                // get the id to stop
-                clearInterval(intervalID);
-                isAutoPlay = false;
-                document.querySelector('.AutoPlay-Button').innerHTML = 'Stop';
-                document.querySelector('.AutoPlay-Button').style.background = 'red';
-
-
-            }
-
-        }
-
-
-     // variable to keep track to stop the auto play
+        // variable to keep track to stop the auto play
         
         let isAutoPlay = false;
 
@@ -302,10 +266,6 @@
             }
             
         });
-
-     
-     
-        
  </script>
 
 </body>
